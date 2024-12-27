@@ -1,7 +1,25 @@
 <template>
-
+    <div id="app">
+        <Navbar />
+        <router-view />
+    </div>
 </template>
 
-<style lang="scss">
+<script>
+import Navbar from './components/AppNavbar.vue';
 
+export default {
+    name: 'App',
+    components: {
+        Navbar,
+    },
+};
+</script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 </style>
