@@ -1,4 +1,3 @@
 <template>
-    <div>Contenido en construcción</div>
-  </template>
-  
+  <div>Contenido en construcción - notfound</div>
+</template>
