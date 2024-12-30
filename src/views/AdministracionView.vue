@@ -16,20 +16,32 @@
 
 <script>
 export default {
-  name: 'Administracion',
+  name: 'AdministracionView',
   data() {
     return {
       nombre: '',
       apellido: '',
-      usuario: null,
+      usuario: null, // Objeto para almacenar usuario registrado
     };
+  },
+  created() {
+    // Cargar usuario desde localStorage si existe
+    const storedUser = localStorage.getItem('usuario');
+    if (storedUser) {
+      this.usuario = JSON.parse(storedUser);
+    }
   },
   methods: {
     registrarUsuario() {
-      this.usuario = {
-        nombre: this.nombre,
-        apellido: this.apellido,
-      };
+      if (this.nombre.trim() && this.apellido.trim()) {
+        // Guardar el usuario en data y en localStorage
+        this.usuario = {
+          nombre: this.nombre,
+          apellido: this.apellido,
+        };
+        localStorage.setItem('usuario', JSON.stringify(this.usuario));
+        alert('Usuario registrado correctamente.');
+      }
     },
   },
 };
