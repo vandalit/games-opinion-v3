@@ -1,7 +1,12 @@
 <template>
   <div>
     <h1>Opiniones sobre {{ gameName }}</h1>
+
+    <!-- Validar si hay un usuario registrado -->
     <div v-if="usuario">
+      <p>Bienvenido, <strong>{{ usuario.nombre }} {{ usuario.apellido }}</strong>. ¡Puedes agregar tus opiniones!</p>
+
+      <!-- Mostrar opiniones -->
       <div v-if="opiniones.length > 0">
         <div v-for="(opinion, index) in opiniones" :key="index" class="opinion-item">
           <p>{{ opinion.text }} - <strong>{{ opinion.usuario }}</strong></p>
@@ -10,11 +15,15 @@
         </div>
       </div>
       <div v-else>
-        <p>No hay opiniones sobre este juego.</p>
+        <p>No hay opiniones sobre este juego. Sé el primero en comentar.</p>
       </div>
+
+      <!-- Formulario para agregar opiniones -->
       <textarea v-model="nuevaOpinion" placeholder="Escribe tu opinión aquí"></textarea>
       <button @click="agregarOpinion">Agregar</button>
     </div>
+
+    <!-- Si no hay un usuario registrado -->
     <div v-else>
       <p>Debes registrar un usuario en la sección de administración para dejar opiniones.</p>
     </div>
@@ -80,6 +89,15 @@ textarea {
 }
 button {
   margin: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
 }
 .opinion-item {
   margin-bottom: 10px;
